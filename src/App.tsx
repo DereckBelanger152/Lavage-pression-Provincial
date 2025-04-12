@@ -111,48 +111,26 @@ function App() {
     <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="fixed w-full bg-white/95 backdrop-blur-sm shadow-md z-50">
-        <div className="container mx-auto px-4 py-3">
+        <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
+            {/* Logo and Company Name */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               className="flex items-center"
             >
-              <div className="bg-blue-600 text-white p-2 rounded-lg mr-3">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 4L12 20"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M9 7L12 4L15 7"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M6 10C6 7.79086 7.79086 6 10 6H14C16.2091 6 18 7.79086 18 10V10C18 12.2091 16.2091 14 14 14H10C7.79086 14 6 12.2091 6 10V10Z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  />
-                </svg>
-              </div>
-              <h1 className="text-blue-600 text-2xl font-bold">
+              <img
+                src="/logonobackground.png" // Ensure the path to your logo.ico file is correct
+                alt="Lavage à pression Provincial Logo"
+                className="w-10 h-10 mr-3" // Adjust size as needed
+              />
+              <h1 className="text-blue-600 text-xl md:text-2xl font-bold">
                 Lavage à pression <span className="font-light">Provincial</span>
               </h1>
             </motion.div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-6 lg:gap-8">
               {navItems.map((item, index) => (
                 <motion.a
                   key={item.href}
@@ -179,8 +157,9 @@ function App() {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden text-gray-600 focus:outline-none"
+              className="md:hidden text-gray-600 hover:text-blue-600 focus:outline-none p-2"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -193,26 +172,28 @@ function App() {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                className="md:hidden mt-4"
+                className="md:hidden mt-4 bg-white rounded-lg overflow-hidden shadow-lg"
               >
-                {navItems.map((item) => (
+                <div className="py-2 px-3">
+                  {navItems.map((item) => (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      className="block py-3 text-gray-600 hover:text-blue-600 hover:bg-blue-50 px-2 rounded-md transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
                   <a
-                    key={item.href}
-                    href={item.href}
-                    className="block py-2 text-gray-600 hover:text-blue-600 transition-colors"
+                    href="tel:+1234567890"
+                    className="flex items-center gap-2 text-blue-600 font-semibold py-3 px-2 mt-2 hover:bg-blue-50 rounded-md"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    {item.label}
+                    <Phone size={18} />
+                    <span>Appelez-nous</span>
                   </a>
-                ))}
-                <a
-                  href="tel:+1234567890"
-                  className="flex items-center gap-2 text-blue-600 font-semibold py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  <Phone size={18} />
-                  <span>Appelez-nous</span>
-                </a>
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
@@ -328,7 +309,7 @@ function App() {
               <div className="relative">
                 <div className="absolute -top-6 -left-6 w-24 h-24 bg-blue-100 rounded-lg z-0"></div>
                 <img
-                  src="/api/placeholder/600/400"
+                  src="/notreequipe.jpg"
                   alt="Notre équipe"
                   className="rounded-lg shadow-xl relative z-10 w-full"
                 />
@@ -450,19 +431,17 @@ function App() {
             <ServiceCard
               icon={<Building2 size={32} />}
               title="Décapage de Toiture Métallique"
-              description="Préparation experte des toits métalliques avant peinture, assurant une adhérence et une longévité parfaites."
+              description="Préparation experte des toits métalliques avant peinture, assurant une adhérence et une longévité parfaites. Notre procédé élimine rouille, débris et anciens revêtements pour garantir une surface idéale pour l'application de nouveaux traitements protecteurs."
             />
             <ServiceCard
               icon={<Home size={32} />}
               title="Nettoyage Extérieur Résidentiel"
-              description="Nettoyage complet du revêtement, des soffites et des gouttières pour maintenir l'apparence de votre maison."
+              description="Nettoyage complet du revêtement, des soffites et des gouttières pour maintenir l'apparence de votre maison. Notre service élimine moisissures, algues et saletés incrustées, redonnant à votre propriété son éclat d'origine tout en prolongeant la durée de vie de vos matériaux extérieurs."
             />
             <ServiceCard
               icon={<Factory size={32} />}
               title="Nettoyage de bâtiments agricoles"
-              description="Je vous propose un service professionnel de lavage à haute pression et de désinfection, adapté aux bâtiments 
-              agricoles comme les porcheries. On respecte les normes de biosécurité en vigueur, on utilise des produits approuvés par le 
-              MAPAQ et l’ACIA, et on s’assure que tout est fait dans les règles."
+              description="Je vous propose un service professionnel de lavage à haute pression et de désinfection, adapté aux bâtiments agricoles comme les porcheries. On respecte les normes de biosécurité en vigueur, on utilise des produits approuvés par le MAPAQ et l'ACIA, et on s'assure que tout est fait dans les règles."
             />
             <ServiceCard
               icon={
@@ -504,7 +483,7 @@ function App() {
                 </svg>
               }
               title="Nettoyage de Terrasse & Patio"
-              description="Restaurez l'éclat de vos espaces extérieurs avec notre service de nettoyage professionnel pour terrasses et patios."
+              description="Restaurez l'éclat de vos espaces extérieurs avec notre service de nettoyage professionnel pour terrasses et patios. Notre équipement spécialisé élimine en profondeur les taches, la mousse et les moisissures, redonnant vie à vos bois, composites ou dalles sans les endommager, pour des espaces de vie extérieurs impeccables."
             />
             <ServiceCard
               icon={
@@ -538,7 +517,7 @@ function App() {
                 </svg>
               }
               title="Nettoyage de Gouttières"
-              description="Protégez votre propriété contre les dégâts d'eau avec notre service d'entretien et de nettoyage des gouttières."
+              description="Protégez votre propriété contre les dégâts d'eau avec notre service d'entretien et de nettoyage des gouttières. Nous délogeons feuilles, débris et accumulations qui obstruent l'écoulement, prévenons l'infiltration d'eau et les dommages structurels, et prolongeons la durée de vie de votre système d'évacuation des eaux pluviales."
             />
             <ServiceCard
               icon={
@@ -571,7 +550,7 @@ function App() {
                 </svg>
               }
               title="Nettoyage sous pression"
-              description="Éliminez efficacement la saleté, les moisissures et les taches tenaces de toutes vos surfaces extérieures."
+              description="Éliminez efficacement la saleté, les moisissures et les taches tenaces de toutes vos surfaces extérieures. Notre équipement de pointe ajuste la pression selon le matériau traité pour un nettoyage en profondeur sans dommage. Idéal pour les entrées, murs, clôtures et toute surface nécessitant une remise à neuf éclatante."
             />
           </div>
         </div>
