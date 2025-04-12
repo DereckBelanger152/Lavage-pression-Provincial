@@ -11,14 +11,13 @@ import {
   ArrowUp,
   Menu,
   X,
-  Facebook,
-  Instagram,
   Star,
   MapPin,
   Clock,
   Calendar,
-  Linkedin,
 } from "lucide-react";
+import { FaFacebook, FaLinkedin, FaInstagram, FaTiktok } from "react-icons/fa";
+
 import {
   motion,
   AnimatePresence,
@@ -820,26 +819,34 @@ function App() {
                 <a
                   href="https://www.facebook.com/profile.php?id=61561781400841"
                   className="text-gray-400 hover:text-blue-400 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <Facebook size={24} />
+                  <FaFacebook size={24} />
                 </a>
                 <a
-                  href="#" //AJOUTER LIEN INSTAGRAM ICI
-                  className="text-gray-400 hover:text-blue-400 transition-colors"
+                  href="https://www.instagram.com/tonprofil"
+                  className="text-gray-400 hover:text-pink-500 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <Instagram size={24} />
-                </a>{" "}
+                  <FaInstagram size={24} />
+                </a>
                 <a
-                  href="#" //AJOUTER LIEN INSTAGRAM ICI
-                  className="text-gray-400 hover:text-blue-400 transition-colors"
+                  href="https://www.linkedin.com/in/tonprofil"
+                  className="text-gray-400 hover:text-blue-500 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <Linkedin size={24} />
-                </a>{" "}
+                  <FaLinkedin size={24} />
+                </a>
                 <a
-                  href="#" //AJOUTER LIEN INSTAGRAM ICI
-                  className="text-gray-400 hover:text-blue-400 transition-colors"
+                  href="https://www.tiktok.com/@lavage.pression.pr?fbclid=IwY2xjawJnzFFleHRuA2FlbQIxMAABHtNOTj0aA11fbww1DhHM_uPTT9Z__ZHbKP4Wfbq63B8WQovgb2JJd2_62jQj_aem_RgbKAm-LbHTy1sxtm7_hMg"
+                  className="text-gray-400 hover:text-black transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <Linkedin size={24} />
+                  <FaTiktok size={24} />
                 </a>
               </div>
             </div>
