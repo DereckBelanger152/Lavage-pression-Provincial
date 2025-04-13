@@ -58,7 +58,37 @@ function App() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // New function to handle smooth scrolling when navbar links are clicked
+  const handleNavLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    targetId: string
+  ) => {
+    e.preventDefault();
+    const targetElement = document.querySelector(targetId);
+
+    if (targetElement) {
+      // Get the navbar height to offset the scroll position
+      const navbarElement = document.querySelector("nav");
+      const navbarHeight = navbarElement ? navbarElement.offsetHeight : 0;
+
+      const targetPosition =
+        targetElement.getBoundingClientRect().top +
+        window.pageYOffset -
+        navbarHeight;
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth",
+      });
+
+      // Close the mobile menu if it's open
+      if (isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Handle form submission here
     console.log("Form submitted:", formData);
@@ -135,6 +165,7 @@ function App() {
                 <motion.a
                   key={item.href}
                   href={item.href}
+                  onClick={(e) => handleNavLinkClick(e, item.href)}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
@@ -144,14 +175,14 @@ function App() {
                 </motion.a>
               ))}
               <motion.a
-                href="tel:+1234567890"
+                href="tel:(581)996-0767" // Updated number
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
                 className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors shadow-md"
               >
                 <Phone size={18} />
-                <span>Appelez-nous</span>
+                <span>Appelez-Nous</span>
               </motion.a>
             </div>
 
@@ -180,13 +211,13 @@ function App() {
                       key={item.href}
                       href={item.href}
                       className="block py-3 text-gray-600 hover:text-blue-600 hover:bg-blue-50 px-2 rounded-md transition-colors"
-                      onClick={() => setIsMenuOpen(false)}
+                      onClick={(e) => handleNavLinkClick(e, item.href)}
                     >
                       {item.label}
                     </a>
                   ))}
                   <a
-                    href="tel:+1234567890"
+                    href="tel:5819960767"
                     className="flex items-center gap-2 text-blue-600 font-semibold py-3 px-2 mt-2 hover:bg-blue-50 rounded-md"
                     onClick={() => setIsMenuOpen(false)}
                   >
