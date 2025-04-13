@@ -127,12 +127,12 @@ function App() {
     },
     {
       image: "/gallerie4.jpg",
-      title: "Toiture Commerciale",
+      title: "Toiture Grande Surface",
       description: "Nettoyage en profondeur d'une usine.",
     },
     {
       image: "/gallerie5.jpg",
-      title: "Toiture Métallique",
+      title: "Toiture de Grange",
       description: "Avant/Après de notre service de décapage.",
     },
     {
@@ -175,12 +175,14 @@ function App() {
               onClick={scrollToTop}
             >
               <img
-                src="/logonobackground.png" // Ensure the path to your logo.ico file is correct
+                src="/logonobackground.png"
                 alt="Lavage à pression Provincial Logo"
-                className="w-10 h-10 mr-3" // Adjust size as needed
+                className="w-10 h-10 mr-3"
+                width="40"
+                height="40"
               />
               <h1 className="text-blue-600 text-xl md:text-2xl font-bold">
-                Lavage à pression <span className="font-light">Provincial</span>
+                Lavage à pression Provincial
               </h1>
             </motion.div>
 
@@ -364,7 +366,9 @@ function App() {
                 <img
                   src="/notreequipe.jpg"
                   alt="Notre équipe"
-                  className="rounded-lg shadow-xl relative z-10 w-full"
+                  className="rounded-lg shadow-xl relative z-10 w-full h-auto"
+                  width="600"
+                  height="400"
                 />
                 <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-600/10 rounded-lg z-0"></div>
               </div>
@@ -380,14 +384,10 @@ function App() {
                 À PROPOS DE NOUS
               </div>
               <h2 className="text-3xl font-bold mb-6 text-gray-800">
-                Une expertise incomparable dans le lavage à pression
+                À propos de Lavage à pression Provincial
               </h2>
               <p className="text-lg text-gray-600 mb-6">
-                Depuis plus de 2 ans, Lavage à pression Provincial s'est engagé
-                à fournir des services de nettoyage haute pression de première
-                qualité. Notre expertise dans le décapage de toitures
-                métalliques et le nettoyage de bâtiments agricoles nous a permis
-                de devenir un leader dans l'industrie.
+                Découvrez notre expertise dans le nettoyage haute pression.
               </p>
               <div className="grid grid-cols-2 gap-4 mb-8">
                 <div className="flex items-start gap-3">
@@ -470,7 +470,7 @@ function App() {
               CE QUE NOUS OFFRONS
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
-              Nos Services Professionnels
+              Services de nettoyage haute pression professionnels
             </h2>
             <p className="text-lg text-gray-600">
               De l'entretien résidentiel aux projets commerciaux et industriels,
@@ -502,7 +502,7 @@ function App() {
                   height="32"
                   viewBox="0 0 24 24"
                   fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns="https://www.w3.org/2000/svg"
                 >
                   <path
                     d="M3 7H21"
@@ -544,7 +544,7 @@ function App() {
                   height="32"
                   viewBox="0 0 24 24"
                   fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns="https://www.w3.org/2000/svg"
                 >
                   <path
                     d="M21 8C21 12.4183 16.9706 16 12 16C7.02944 16 3 12.4183 3 8"
@@ -578,7 +578,7 @@ function App() {
                   height="32"
                   viewBox="0 0 24 24"
                   fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns="https://www.w3.org/2000/svg"
                 >
                   <circle
                     cx="12"
@@ -613,7 +613,7 @@ function App() {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="text-white max-w-2xl">
               <h2 className="text-3xl font-bold mb-4">
-                Prêt à transformer l'apparence de votre propriété?
+                Transformez l'apparence de votre propriété dès aujourd'hui
               </h2>
               <p className="text-blue-100 text-lg mb-6">
                 Contactez-nous dès aujourd'hui pour une évaluation gratuite et
@@ -655,7 +655,7 @@ function App() {
               NOS RÉALISATIONS
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
-              Galerie de Projets
+              Galerie de projets de nettoyage haute pression
             </h2>
             <p className="text-lg text-gray-600">
               Découvrez nos transformations les plus spectaculaires à travers
@@ -677,6 +677,8 @@ function App() {
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                  width="400"
+                  height="300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                   <div className="text-white w-full">
@@ -704,7 +706,7 @@ function App() {
               CE QUE DISENT NOS CLIENTS
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
-              Témoignages
+              Témoignages de nos clients satisfaits
             </h2>
             <p className="text-lg text-gray-600">
               Découvrez ce que nos clients satisfaits disent de notre service et
@@ -744,7 +746,7 @@ function App() {
               NOTRE APPROCHE
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
-              Comment nous travaillons
+              Notre processus de nettoyage en 4 étapes
             </h2>
             <p className="text-lg text-gray-600">
               Un processus simple et efficace pour des résultats exceptionnels.
@@ -813,7 +815,9 @@ function App() {
             className="max-w-3xl mx-auto text-center"
           >
             <Shield size={48} className="mx-auto mb-6" />
-            <h2 className="text-3xl font-bold mb-6">Notre Engagement</h2>
+            <h2 className="text-3xl font-bold mb-6">
+              Engagement de Lavage à pression Provincial
+            </h2>
             <p className="text-xl mb-8">
               Peu importe la surface — si elle peut être nettoyée sous pression,
               nous pouvons nous en occuper !
@@ -843,7 +847,7 @@ function App() {
           <div className="grid md:grid-cols-3 gap-8">
             <div>
               <h3 className="text-xl font-bold mb-4">
-                Lavage à pression Provincial
+                Lavage à pression Provincial - Services professionnels
               </h3>
               <p className="text-gray-400">
                 Services professionnels de nettoyage haute pression pour tous
@@ -851,7 +855,7 @@ function App() {
               </p>
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-4">Contact</h3>
+              <h3 className="text-xl font-bold mb-4">Contactez-nous</h3>
               <div className="space-y-2">
                 <a
                   href="tel:+1234567890"
@@ -870,7 +874,9 @@ function App() {
               </div>
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-4">Suivez-nous</h3>
+              <h3 className="text-xl font-bold mb-4">
+                Suivez-nous sur les réseaux sociaux
+              </h3>
               <div className="flex gap-4">
                 <a
                   href="https://www.facebook.com/profile.php?id=61561781400841"
