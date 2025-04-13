@@ -25,6 +25,7 @@ import {
   useTransform,
 } from "framer-motion";
 import ContactForm from "./components/ContactForm";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -677,8 +678,6 @@ function App() {
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                  width="400"
-                  height="300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                   <div className="text-white w-full">
@@ -934,6 +933,8 @@ function App() {
           </motion.button>
         )}
       </AnimatePresence>
+      {/* Add Analytics */}
+      <Analytics />
     </div>
   );
 }
