@@ -110,12 +110,36 @@ function App() {
   ];
 
   const galleryImages = [
-    "/gallerie1.jpg",
-    "/gallerie2.jpg",
-    "/gallerie3.jpg",
-    "/gallerie4.jpg",
-    "/gallerie5.jpg",
-    "/gallerie6.jpg",
+    {
+      image: "/gallerie1.jpg",
+      title: "Projet Résidentiel",
+      description: "Application de scellant sur une toiture métallique.",
+    },
+    {
+      image: "/gallerie2.jpg",
+      title: "Toiture Commerciale",
+      description: "Produit final de décapage de toiture métallique.",
+    },
+    {
+      image: "/gallerie3.jpg",
+      title: "Toiture Métallique",
+      description: "Avant/Après de notre service de décapage.",
+    },
+    {
+      image: "/gallerie4.jpg",
+      title: "Toiture Commerciale",
+      description: "Nettoyage en profondeur d'une usine.",
+    },
+    {
+      image: "/gallerie5.jpg",
+      title: "Toiture Métallique",
+      description: "Avant/Après de notre service de décapage.",
+    },
+    {
+      image: "/gallerie6.jpg",
+      title: "Toiture Résidentielle",
+      description: "Nettoyage et entretien de toiture.",
+    },
   ];
 
   const advantages = [
@@ -147,7 +171,8 @@ function App() {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="flex items-center"
+              className="flex items-center cursor-pointer"
+              onClick={scrollToTop}
             >
               <img
                 src="/logonobackground.png" // Ensure the path to your logo.ico file is correct
@@ -639,7 +664,7 @@ function App() {
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {galleryImages.map((image, index) => (
+            {galleryImages.map((project, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -649,15 +674,15 @@ function App() {
                 className="group relative h-64 overflow-hidden rounded-lg shadow-lg"
               >
                 <img
-                  src={image}
-                  alt={`Projet ${index + 1}`}
+                  src={project.image}
+                  alt={project.title}
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                   <div className="text-white w-full">
-                    <h3 className="font-bold text-lg">Projet {index + 1}</h3>
+                    <h3 className="font-bold text-lg">{project.title}</h3>
                     <p className="text-gray-200 text-sm">
-                      Nettoyage complet de surface
+                      {project.description}
                     </p>
                   </div>
                 </div>
@@ -796,7 +821,7 @@ function App() {
             <div className="flex flex-col md:flex-row items-center justify-center gap-6">
               <div className="flex items-center gap-2">
                 <Check size={24} />
-                <span>Évaluation gratuite sur place</span>
+                <span>Évaluation gratuite</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check size={24} />
