@@ -26,7 +26,7 @@
   
 👤 Contact
 
-Pour des question ou faire affaire avec le créateur du site web,
-📧 Email: dereckblanger@gmail.com
-💼 LinkedIn: linkedin.com/in/dereck-bélanger-437259338
+Pour des question ou faire affaire avec le créateur du site web, <br>
+📧 Email: dereckblanger@gmail.com <br>
+💼 LinkedIn: linkedin.com/in/dereck-bélanger-437259338 <br>
 🌐 www.evoweb.ca
