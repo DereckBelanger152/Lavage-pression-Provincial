@@ -15,6 +15,8 @@ import {
   MapPin,
   Clock,
   Calendar,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { FaFacebook, FaLinkedin, FaInstagram, FaTiktok } from "react-icons/fa";
 
@@ -37,6 +39,7 @@ function App() {
     message: "",
   });
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [activeGalleryItem, setActiveGalleryItem] = useState(null);
 
   const testimonials = [
     {
@@ -215,30 +218,30 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="fixed w-full bg-white/95 backdrop-blur-sm shadow-md z-50">
+      {/* Navigation - Enhanced with hover effects and transitions */}
+      <nav className="fixed w-full bg-white/95 backdrop-blur-sm shadow-md z-50 transition-all duration-300">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             {/* Logo and Company Name */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="flex items-center cursor-pointer"
+              className="flex items-center cursor-pointer group"
               onClick={scrollToTop}
             >
               <img
                 src="/logonobackground.png"
                 alt="Lavage à pression Provincial Logo"
-                className="w-10 h-10 mr-3"
+                className="w-auto h-10 mr-3 transition-transform duration-300 group-hover:scale-110"
                 width="40"
                 height="40"
               />
-              <h1 className="text-blue-600 text-xl md:text-2xl font-bold">
+              <h1 className="text-blue-600 text-xl md:text-2xl font-bold group-hover:text-blue-700 transition-colors duration-300">
                 Lavage à pression Provincial
               </h1>
             </motion.div>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation - Enhanced with hover effects */}
             <div className="hidden md:flex items-center gap-6 lg:gap-8">
               {navItems.map((item, index) => (
                 <motion.a
@@ -248,17 +251,17 @@ function App() {
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="text-gray-600 hover:text-blue-600 transition-colors font-medium"
+                  className="text-gray-600 hover:text-blue-600 relative font-medium transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 hover:after:w-full after:transition-all after:duration-300"
                 >
                   {item.label}
                 </motion.a>
               ))}
               <motion.a
-                href="tel:(581)996-0767" // Updated number
+                href="tel:(581)996-0767"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors shadow-md"
+                className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
               >
                 <Phone size={18} />
                 <span>Appelez-Nous</span>
@@ -267,7 +270,7 @@ function App() {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden text-gray-600 hover:text-blue-600 focus:outline-none p-2"
+              className="md:hidden text-gray-600 hover:text-blue-600 focus:outline-none p-2 transition-colors duration-300"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             >
@@ -282,14 +285,14 @@ function App() {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                className="md:hidden mt-4 bg-white rounded-lg overflow-hidden shadow-lg"
+                className="md:hidden mt-4 bg-white rounded-lg overflow-hidden shadow-lg border border-gray-100"
               >
                 <div className="py-2 px-3">
                   {navItems.map((item) => (
                     <a
                       key={item.href}
                       href={item.href}
-                      className="block py-3 text-gray-600 hover:text-blue-600 hover:bg-blue-50 px-2 rounded-md transition-colors"
+                      className="block py-3 text-gray-600 hover:text-blue-600 hover:bg-blue-50 px-2 rounded-md transition-all duration-300"
                       onClick={(e) => handleNavLinkClick(e, item.href)}
                     >
                       {item.label}
@@ -297,7 +300,7 @@ function App() {
                   ))}
                   <a
                     href="tel:5819960767"
-                    className="flex items-center gap-2 text-blue-600 font-semibold py-3 px-2 mt-2 hover:bg-blue-50 rounded-md"
+                    className="flex items-center gap-2 text-blue-600 font-semibold py-3 px-2 mt-2 hover:bg-blue-50 rounded-md transition-colors duration-300"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <Phone size={18} />
@@ -309,24 +312,27 @@ function App() {
           </AnimatePresence>
         </div>
       </nav>
-      {/* Hero Section */}
+
+      {/* Hero Section - Enhanced with zoom effect on video */}
       <div
         ref={heroRef}
         className="relative h-screen bg-cover bg-center flex items-center justify-center overflow-hidden"
       >
-        <video
-          className="absolute inset-0 w-full h-full object-cover"
-          src="/headerpressure.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-        ></video>
+        <div className="absolute inset-0 w-full h-full transform scale-105">
+          <video
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-10000 ease-out animate-slow-zoom"
+            src="/headerpressure.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+          ></video>
+        </div>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30 backdrop-blur-sm"
+          className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/30"
         />
         <motion.div
           style={{ opacity: heroOpacity, scale: heroScale }}
@@ -336,7 +342,7 @@ function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-sm font-semibold text-blue-400 mb-3"
+            className="text-sm font-semibold text-blue-300 mb-3 tracking-wider"
           >
             SERVICE PROFESSIONNEL DE NETTOYAGE À HAUTE PRESSION
           </motion.div>
@@ -344,10 +350,10 @@ function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight"
+            className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-md"
           >
             Redonnez vie à vos surfaces{" "}
-            <span className="text-blue-400">extérieures</span>
+            <span className="text-blue-300">extérieures</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -372,7 +378,7 @@ function App() {
                   .querySelector("#contact")
                   ?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-900/30"
+              className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-blue-900/40 hover:scale-105 transform"
             >
               Estimation gratuite
               <ArrowRight size={20} />
@@ -385,39 +391,59 @@ function App() {
                   .querySelector("#services")
                   ?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="bg-white/10 backdrop-blur-sm text-white border border-white/30 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white/20 transition-colors"
+              className="bg-white/20 backdrop-blur-sm text-white border border-white/40 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white/30 transition-all duration-300 hover:border-white/60"
             >
               Nos services
             </a>
           </motion.div>
         </motion.div>
       </div>
-      {/* Quick Info Bar */}
-      <div className="bg-blue-900 text-white py-4">
+
+      {/* Quick Info Bar - Enhanced with better contrast and interaction */}
+      <div className="bg-blue-800 text-white py-5 shadow-md">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-2">
-              <Phone size={18} />
+            <a
+              href="tel:(581)996-0767"
+              className="flex items-center gap-2 hover:text-blue-200 transition-colors duration-300 group"
+            >
+              <div className="bg-blue-700 p-2 rounded-full group-hover:bg-blue-600 transition-colors duration-300">
+                <Phone size={18} />
+              </div>
               <span>(581) 996-0767</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Mail size={18} />
+            </a>
+            <a
+              href="mailto:contact@lavageapressionprovincial.com"
+              className="flex items-center gap-2 hover:text-blue-200 transition-colors duration-300 group"
+            >
+              <div className="bg-blue-700 p-2 rounded-full group-hover:bg-blue-600 transition-colors duration-300">
+                <Mail size={18} />
+              </div>
               <span>contact@lavageapressionprovincial.com</span>
-            </div>
+            </a>
             <div className="flex items-center gap-2">
-              <MapPin size={18} />
+              <div className="bg-blue-700 p-2 rounded-full">
+                <MapPin size={18} />
+              </div>
               <span>Québec, Canada</span>
             </div>
             <div className="flex items-center gap-2">
-              <Calendar size={18} />
+              <div className="bg-blue-700 p-2 rounded-full">
+                <Calendar size={18} />
+              </div>
               <span>Lun-Ven: 8h-18h</span>
             </div>
           </div>
         </div>
       </div>
-      {/* About Section */}
-      <div id="about" className="py-24 bg-white">
-        <div className="container mx-auto px-4">
+
+      {/* About Section - Enhanced with better visuals */}
+      <div id="about" className="py-24 bg-white relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute top-0 right-0 w-72 h-72 bg-blue-50 rounded-full -translate-y-1/2 translate-x-1/2 opacity-70"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-50 rounded-full translate-y-1/2 -translate-x-1/2 opacity-70"></div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -430,11 +456,15 @@ function App() {
                 <img
                   src="/notreequipe.jpg"
                   alt="Notre équipe"
-                  className="rounded-lg shadow-xl relative z-10 w-full h-auto"
+                  className="rounded-lg shadow-xl relative z-10 w-full h-auto hover:shadow-2xl transition-shadow duration-300"
                   width="600"
                   height="400"
                 />
                 <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-600/10 rounded-lg z-0"></div>
+
+                {/* Added decorative elements */}
+                <div className="absolute -top-3 -right-3 w-16 h-16 bg-blue-600/10 rounded-lg z-0 animate-pulse"></div>
+                <div className="absolute -bottom-3 -left-3 w-20 h-20 bg-blue-200/20 rounded-full z-0"></div>
               </div>
             </motion.div>
 
@@ -443,7 +473,11 @@ function App() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-sm"
             >
+              <div className="inline-block px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-sm font-medium mb-4">
+                NOTRE HISTOIRE
+              </div>
               <h2 className="text-3xl font-bold mb-6 text-gray-800">
                 À propos de Lavage à pression Provincial
               </h2>
@@ -451,8 +485,8 @@ function App() {
                 Découvrez notre expertise dans le nettoyage haute pression.
               </p>
               <div className="grid grid-cols-2 gap-4 mb-8">
-                <div className="flex items-start gap-3">
-                  <div className="text-blue-600 mt-1">
+                <div className="flex items-start gap-3 group hover:bg-blue-50 p-2 rounded-lg transition-colors duration-300">
+                  <div className="text-blue-600 mt-1 bg-blue-100 p-2 rounded-full group-hover:bg-blue-200 transition-colors duration-300">
                     <Check size={20} />
                   </div>
                   <div>
@@ -462,8 +496,8 @@ function App() {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <div className="text-blue-600 mt-1">
+                <div className="flex items-start gap-3 group hover:bg-blue-50 p-2 rounded-lg transition-colors duration-300">
+                  <div className="text-blue-600 mt-1 bg-blue-100 p-2 rounded-full group-hover:bg-blue-200 transition-colors duration-300">
                     <Check size={20} />
                   </div>
                   <div>
@@ -473,8 +507,8 @@ function App() {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <div className="text-blue-600 mt-1">
+                <div className="flex items-start gap-3 group hover:bg-blue-50 p-2 rounded-lg transition-colors duration-300">
+                  <div className="text-blue-600 mt-1 bg-blue-100 p-2 rounded-full group-hover:bg-blue-200 transition-colors duration-300">
                     <Check size={20} />
                   </div>
                   <div>
@@ -484,8 +518,8 @@ function App() {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <div className="text-blue-600 mt-1">
+                <div className="flex items-start gap-3 group hover:bg-blue-50 p-2 rounded-lg transition-colors duration-300">
+                  <div className="text-blue-600 mt-1 bg-blue-100 p-2 rounded-full group-hover:bg-blue-200 transition-colors duration-300">
                     <Check size={20} />
                   </div>
                   <div>
@@ -496,17 +530,17 @@ function App() {
                   </div>
                 </div>
               </div>
-              <div className="flex gap-4 mt-8">
+              <div className="flex gap-4 mt-8 bg-blue-50 p-4 rounded-xl">
                 <div className="text-center">
                   <h3 className="text-3xl font-bold text-blue-600 mb-1">2+</h3>
                   <p className="text-gray-600 text-sm">Années d'expérience</p>
                 </div>
-                <div className="w-px bg-gray-200"></div>
+                <div className="w-px bg-blue-200"></div>
                 <div className="text-center">
                   <h3 className="text-3xl font-bold text-blue-600 mb-1">50+</h3>
                   <p className="text-gray-600 text-sm">Clients satisfaits</p>
                 </div>
-                <div className="w-px bg-gray-200"></div>
+                <div className="w-px bg-blue-200"></div>
                 <div className="text-center">
                   <h3 className="text-3xl font-bold text-blue-600 mb-1">
                     100%
@@ -518,8 +552,9 @@ function App() {
           </div>
         </div>
       </div>
-      {/* Services Section */}
-      <div id="services" className="py-24 bg-gray-50">
+
+      {/* Services Section - Enhanced cards with hover effects */}
+      <div id="services" className="py-24 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -527,16 +562,15 @@ function App() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <div className="mb-2 text-blue-600 font-semibold">
-              CE QUE NOUS OFFRONS
+            <div className="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-600 font-semibold mb-4">
+              NOS SERVICES
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
-              Services de nettoyage haute pression professionnels
+              Des solutions de nettoyage adaptées à tous vos besoins
             </h2>
             <p className="text-lg text-gray-600">
-              De l'entretien résidentiel aux projets commerciaux et industriels,
-              nous avons l'expertise et l'équipement nécessaires pour tous vos
-              besoins de nettoyage extérieur.
+              Notre expertise couvre une large gamme de services de nettoyage à
+              haute pression, adaptés aux besoins spécifiques de chaque client.
             </p>
           </motion.div>
 
@@ -668,9 +702,11 @@ function App() {
           </div>
         </div>
       </div>
-      {/* CTA Section */}
-      <div className="py-16 bg-blue-600">
-        <div className="container mx-auto px-4">
+
+      {/* CTA Section - Enhanced with gradient and pattern */}
+      <div className="py-16 bg-gradient-to-r from-blue-700 to-blue-600 relative overflow-hidden">
+        <div className="absolute inset-0 bg-pattern opacity-10"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="text-white max-w-2xl">
               <h2 className="text-3xl font-bold mb-4">
@@ -695,7 +731,7 @@ function App() {
             <div>
               <a
                 href="#contact"
-                className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-50 transition-colors shadow-lg"
+                className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-50 transition-colors shadow-lg transform hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
               >
                 Obtenir un devis gratuit
               </a>
@@ -703,6 +739,7 @@ function App() {
           </div>
         </div>
       </div>
+
       {/* Gallery Section */}
       <div id="gallery" className="py-24 bg-white">
         <div className="container mx-auto px-4">
@@ -712,7 +749,7 @@ function App() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <div className="mb-2 text-blue-600 font-semibold">
+            <div className="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-600 font-semibold mb-4">
               NOS RÉALISATIONS
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
@@ -732,14 +769,14 @@ function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative h-64 overflow-hidden rounded-lg shadow-lg"
+                className="group relative h-64 overflow-hidden rounded-lg shadow-lg cursor-pointer"
               >
                 <img
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                   <div className="text-white w-full">
                     <h3 className="font-bold text-lg">{project.title}</h3>
                     <p className="text-gray-200 text-sm">
@@ -752,7 +789,8 @@ function App() {
           </div>
         </div>
       </div>
-      {/* Testimonials Section */}
+
+      {/* Testimonials Section - Enhanced carousel and cards */}
       <div id="testimonials" className="py-24 bg-gray-50">
         <div className="container mx-auto px-4">
           <motion.div
@@ -761,7 +799,7 @@ function App() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <div className="mb-2 text-blue-600 font-semibold">
+            <div className="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-600 font-semibold mb-4">
               CE QUE DISENT NOS CLIENTS SATISFAITS
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
@@ -773,7 +811,7 @@ function App() {
             {/* Left Button */}
             <button
               onClick={handlePrev}
-              className="absolute left-0 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors z-10"
+              className="absolute left-0 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-all transform hover:scale-110 z-10"
               style={{ top: "50%", transform: "translateY(-50%)" }}
             >
               &#8592;
@@ -796,7 +834,7 @@ function App() {
             {/* Right Button */}
             <button
               onClick={handleNext}
-              className="absolute right-0 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors z-10"
+              className="absolute right-0 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-all transform hover:scale-110 z-10"
               style={{ top: "50%", transform: "translateY(-50%)" }}
             >
               &#8594;
@@ -804,16 +842,23 @@ function App() {
           </div>
         </div>
       </div>
-      {/* Commitment Section */}
-      <div id="engagement" className="py-16 bg-blue-600 text-white">
-        <div className="container mx-auto px-4">
+
+      {/* Commitment Section - Enhanced with icons and hover effect */}
+      <div
+        id="engagement"
+        className="py-16 bg-gradient-to-r from-blue-700 to-blue-600 text-white relative overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-pattern opacity-10"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="max-w-3xl mx-auto text-center"
           >
-            <Shield size={48} className="mx-auto mb-6" />
+            <div className="bg-white/20 rounded-full p-4 inline-block mb-6">
+              <Shield size={48} className="mx-auto" />
+            </div>
             <h2 className="text-3xl font-bold mb-6">
               Engagement de Lavage à pression Provincial
             </h2>
@@ -822,15 +867,15 @@ function App() {
               nous pouvons nous en occuper !
             </p>
             <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 bg-white/10 px-6 py-3 rounded-lg hover:bg-white/20 transition-all">
                 <Check size={24} />
                 <span>Évaluation gratuite</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 bg-white/10 px-6 py-3 rounded-lg hover:bg-white/20 transition-all">
                 <Check size={24} />
                 <span>Technique experte</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 bg-white/10 px-6 py-3 rounded-lg hover:bg-white/20 transition-all">
                 <Check size={24} />
                 <span>Équipement haute performance</span>
               </div>
@@ -840,62 +885,70 @@ function App() {
       </div>
       {/* Contact Section */}
       <ContactForm />
-      {/* Footer */}
+      {/* Footer - Enhanced with better layout and hover effects */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
-              <h3 className="text-xl font-bold mb-4">
-                Lavage à pression Provincial - Services professionnels
+              <h3 className="text-xl font-bold mb-4 border-b border-gray-700 pb-2">
+                Lavage à pression Provincial
               </h3>
               <p className="text-gray-400">
                 Services professionnels de nettoyage haute pression pour tous
-                vos besoins.
+                vos besoins résidentiels, commerciaux et agricoles.
               </p>
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-4">Contactez-nous</h3>
-              <div className="space-y-2">
+              <h3 className="text-xl font-bold mb-4 border-b border-gray-700 pb-2">
+                Contactez-nous
+              </h3>
+              <div className="space-y-4">
                 <a
-                  href="tel:+1234567890"
-                  className="flex items-center gap-2 text-gray-400 hover:text-blue-400"
+                  href="tel:+15819960767"
+                  className="flex items-center gap-3 text-gray-400 hover:text-blue-400 transition-colors group"
                 >
-                  <Phone size={20} />
+                  <div className="bg-gray-800 p-2 rounded-full group-hover:bg-blue-900 transition-colors">
+                    <Phone size={18} />
+                  </div>
                   (581) 996-0767
                 </a>
                 <a
-                  href="mailto:info@example.com"
-                  className="flex items-center gap-2 text-gray-400 hover:text-blue-400"
+                  href="mailto:contact@lavageapressionprovincial.com"
+                  className="flex items-center gap-3 text-gray-400 hover:text-blue-400 transition-colors group"
                 >
-                  <Mail size={20} />
+                  <div className="bg-gray-800 p-2 rounded-full group-hover:bg-blue-900 transition-colors">
+                    <Mail size={18} />
+                  </div>
                   contact@lavageapressionprovincial.com
                 </a>
               </div>
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-4">
+              <h3 className="text-xl font-bold mb-4 border-b border-gray-700 pb-2">
                 Suivez-nous sur les réseaux sociaux
               </h3>
               <div className="flex gap-4">
                 <a
                   href="https://www.facebook.com/profile.php?id=61561781400841"
-                  className="text-gray-400 hover:text-blue-400 transition-colors"
+                  className="bg-gray-800 p-3 rounded-full hover:bg-blue-800 text-gray-400 hover:text-white transition-all"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Facebook"
                 >
-                  <FaFacebook size={24} />
+                  <FaFacebook size={22} />
                 </a>
                 <a
                   href="https://www.instagram.com/tonprofil"
-                  className="text-gray-400 hover:text-pink-500 transition-colors"
+                  className="bg-gray-800 p-3 rounded-full hover:bg-pink-700 text-gray-400 hover:text-white transition-all"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Instagram"
                 >
-                  <FaInstagram size={24} />
+                  <FaInstagram size={22} />
                 </a>
                 <a
                   href="https://www.linkedin.com/in/tonprofil"
-                  className="text-gray-400 hover:text-blue-500 transition-colors"
+                  className="bg-gray-800 p-3 rounded-full hover:bg-blue-600 text-gray-400 hover:text-white transition-all"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -903,7 +956,7 @@ function App() {
                 </a>
                 <a
                   href="https://www.tiktok.com/@lavage.pression.pr?fbclid=IwY2xjawJnzFFleHRuA2FlbQIxMAABHtNOTj0aA11fbww1DhHM_uPTT9Z__ZHbKP4Wfbq63B8WQovgb2JJd2_62jQj_aem_RgbKAm-LbHTy1sxtm7_hMg"
-                  className="text-gray-400 hover:text-black transition-colors"
+                  className="bg-gray-800 p-3 rounded-full hover:bg-black-700 text-gray-400 hover:text-white transition-all"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
