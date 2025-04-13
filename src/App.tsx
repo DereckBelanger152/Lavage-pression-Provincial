@@ -36,6 +36,45 @@ function App() {
     phone: "",
     message: "",
   });
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const testimonials = [
+    {
+      text: "Service exceptionnel ! Ils ont complètement transformé l'apparence de ma maison. L'équipe était professionnelle et efficace du début à la fin.",
+      author: "Marie Dubois",
+      role: "Propriétaire",
+    },
+    {
+      text: "Professionnels, ponctuels et efficaces. Je les recommande vivement pour tout projet commercial. Notre façade n'a jamais été aussi propre.",
+      author: "Jean Tremblay",
+      role: "Gestionnaire Commercial",
+    },
+    {
+      text: "Excellent travail sur notre toiture métallique. Résultat impeccable ! La préparation avant peinture était exactement ce dont nous avions besoin.",
+      author: "Sophie Martin",
+      role: "Entrepreneur",
+    },
+    {
+      text: "Un service rapide et de qualité. Je suis très satisfait du résultat final. Je recommande fortement cette entreprise.",
+      author: "Luc Bouchard",
+      role: "Client Résidentiel",
+    },
+    {
+      text: "Très satisfait du service. Mon patio est comme neuf !",
+      author: "Émilie Roy",
+      role: "Propriétaire",
+    },
+    {
+      text: "Un travail impeccable et une équipe très professionnelle.",
+      author: "Marc-André Gagnon",
+      role: "Propriétaire",
+    },
+    {
+      text: "Je recommande fortement cette entreprise pour vos besoins de nettoyage.",
+      author: "Julie Tremblay",
+      role: "Propriétaire",
+    },
+  ];
 
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -100,6 +139,18 @@ function App() {
       phone: "",
       message: "",
     });
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? testimonials.length - 3 : prevIndex - 3
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex + 3 >= testimonials.length ? 0 : prevIndex + 3
+    );
   };
 
   const navItems = [
@@ -315,6 +366,12 @@ function App() {
           >
             <a
               href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                document
+                  .querySelector("#contact")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
               className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-900/30"
             >
               Estimation gratuite
@@ -322,6 +379,12 @@ function App() {
             </a>
             <a
               href="#services"
+              onClick={(e) => {
+                e.preventDefault();
+                document
+                  .querySelector("#services")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
               className="bg-white/10 backdrop-blur-sm text-white border border-white/30 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white/20 transition-colors"
             >
               Nos services
@@ -381,9 +444,6 @@ function App() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="mb-2 text-blue-600 font-semibold">
-                À PROPOS DE NOUS
-              </div>
               <h2 className="text-3xl font-bold mb-6 text-gray-800">
                 À propos de Lavage à pression Provincial
               </h2>
@@ -617,8 +677,8 @@ function App() {
                 Transformez l'apparence de votre propriété dès aujourd'hui
               </h2>
               <p className="text-blue-100 text-lg mb-6">
-                Contactez-nous dès aujourd'hui pour une évaluation gratuite et
-                découvrez comment notre expertise peut vous aider.
+                Contactez-nous pour une évaluation gratuite et découvrez comment
+                notre expertise peut vous aider.
               </p>
               <div className="flex flex-wrap gap-4">
                 {advantages.map((advantage, index) => (
@@ -656,7 +716,7 @@ function App() {
               NOS RÉALISATIONS
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
-              Galerie de projets de nettoyage haute pression
+              Galerie de projets de nettoyage et décapage à haute pression
             </h2>
             <p className="text-lg text-gray-600">
               Découvrez nos transformations les plus spectaculaires à travers
@@ -702,105 +762,45 @@ function App() {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <div className="mb-2 text-blue-600 font-semibold">
-              CE QUE DISENT NOS CLIENTS
+              CE QUE DISENT NOS CLIENTS SATISFAITS
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
-              Témoignages de nos clients satisfaits
+              Témoignages de nos partenaires
             </h2>
-            <p className="text-lg text-gray-600">
-              Découvrez ce que nos clients satisfaits disent de notre service et
-              de notre expertise.
-            </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <TestimonialCard
-              text="Service exceptionnel ! Ils ont complètement transformé l'apparence de ma maison. L'équipe était professionnelle et efficace du début à la fin."
-              author="Marie Dubois"
-              role="Propriétaire"
-            />
-            <TestimonialCard
-              text="Professionnels, ponctuels et efficaces. Je les recommande vivement pour tout projet commercial. Notre façade n'a jamais été aussi propre."
-              author="Jean Tremblay"
-              role="Gestionnaire Commercial"
-            />
-            <TestimonialCard
-              text="Excellent travail sur notre toiture métallique. Résultat impeccable ! La préparation avant peinture était exactement ce dont nous avions besoin."
-              author="Sophie Martin"
-              role="Entrepreneur"
-            />
-          </div>
-        </div>
-      </div>
-      {/* Process Section */}
-      <div className="py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <div className="mb-2 text-blue-600 font-semibold">
-              NOTRE APPROCHE
+          <div className="relative flex items-center">
+            {/* Left Button */}
+            <button
+              onClick={handlePrev}
+              className="absolute left-0 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors z-10"
+              style={{ top: "50%", transform: "translateY(-50%)" }}
+            >
+              &#8592;
+            </button>
+
+            {/* Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mx-auto">
+              {testimonials
+                .slice(currentIndex, currentIndex + 3)
+                .map((testimonial, index) => (
+                  <TestimonialCard
+                    key={index}
+                    text={testimonial.text}
+                    author={testimonial.author}
+                    role={testimonial.role}
+                  />
+                ))}
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
-              Notre processus de nettoyage en 4 étapes
-            </h2>
-            <p className="text-lg text-gray-600">
-              Un processus simple et efficace pour des résultats exceptionnels.
-            </p>
-          </motion.div>
 
-          <div className="grid md:grid-cols-4 gap-8">
-            {[
-              {
-                number: "01",
-                title: "Consultation",
-                description: "Évaluation gratuite de vos besoins spécifiques.",
-              },
-              {
-                number: "02",
-                title: "Planification",
-                description: "Élaboration d'un plan de nettoyage adapté.",
-              },
-              {
-                number: "03",
-                title: "Exécution",
-                description:
-                  "Nettoyage professionnel avec équipement de pointe.",
-              },
-              {
-                number: "04",
-                title: "Inspection",
-                description:
-                  "Vérification finale pour garantir votre satisfaction.",
-              },
-            ].map((step, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="relative"
-              >
-                <div className="bg-blue-50 rounded-lg p-6 h-full">
-                  <div className="text-5xl font-bold text-blue-200 mb-4">
-                    {step.number}
-                  </div>
-                  <h3 className="text-xl font-bold mb-3 text-gray-800">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-600">{step.description}</p>
-                </div>
-                {index < 3 && (
-                  <div className="hidden md:block absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 z-10">
-                    <ArrowRight className="text-blue-300" size={24} />
-                  </div>
-                )}
-              </motion.div>
-            ))}
+            {/* Right Button */}
+            <button
+              onClick={handleNext}
+              className="absolute right-0 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors z-10"
+              style={{ top: "50%", transform: "translateY(-50%)" }}
+            >
+              &#8594;
+            </button>
           </div>
         </div>
       </div>
@@ -977,9 +977,9 @@ function TestimonialCard({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="bg-white p-6 rounded-lg shadow-lg"
+      className="bg-white p-6 rounded-lg shadow-lg text-center"
     >
-      <div className="flex items-center gap-1 text-yellow-400 mb-4">
+      <div className="flex items-center justify-center gap-1 text-yellow-400 mb-4">
         {[...Array(5)].map((_, i) => (
           <Star key={i} size={20} fill="currentColor" />
         ))}
