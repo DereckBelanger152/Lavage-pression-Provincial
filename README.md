@@ -22,4 +22,11 @@
 - **EmailJS** : Envoi de messages à partir du formulaire
 - **Tailwind CSS** : Pour un design simple et épuré
 - **Vercel** : Déploiement et hébergement continu
+
   
+👤 Contact
+
+Pour des question ou faire affaire avec le créateur du site web,
+📧 Email: dereckblanger@gmail.com
+💼 LinkedIn: linkedin.com/in/dereck-bélanger-437259338
+🌐 www.evoweb.ca
