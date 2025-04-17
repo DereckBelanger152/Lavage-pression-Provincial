@@ -15,10 +15,8 @@ import {
   MapPin,
   Clock,
   Calendar,
-  ChevronLeft,
-  ChevronRight,
 } from "lucide-react";
-import { FaFacebook, FaLinkedin, FaInstagram, FaTiktok } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
 
 import {
   motion,
@@ -431,7 +429,7 @@ function App() {
               <div className="bg-blue-700 p-2 rounded-full">
                 <Calendar size={18} />
               </div>
-              <span>Lun-Ven: 8h-18h</span>
+              <span>Lun-Ven: 8h-17h</span>
             </div>
           </div>
         </div>
@@ -938,21 +936,13 @@ function App() {
                   <FaFacebook size={22} />
                 </a>
                 <a
-                  href="https://www.instagram.com/tonprofil"
+                  href="https://www.instagram.com/lavageapressionprovincial?igsh=MXJsYTVjMWh1anlkNw%3D%3D&utm_source=qr&fbclid=IwZXh0bgNhZW0CMTEAAR5ErkNGHaGOH8U23aB9E362w9W6lmQS4Uf5ZcaitCN2SB1pUDneSjTUH_Udag_aem_jVzqypeaYjz4zxmiPzu_TA"
                   className="bg-gray-800 p-3 rounded-full hover:bg-pink-700 text-gray-400 hover:text-white transition-all"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
                 >
                   <FaInstagram size={22} />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/tonprofil"
-                  className="bg-gray-800 p-3 rounded-full hover:bg-blue-600 text-gray-400 hover:text-white transition-all"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaLinkedin size={24} />
                 </a>
                 <a
                   href="https://www.tiktok.com/@lavage.pression.pr?fbclid=IwY2xjawJnzFFleHRuA2FlbQIxMAABHtNOTj0aA11fbww1DhHM_uPTT9Z__ZHbKP4Wfbq63B8WQovgb2JJd2_62jQj_aem_RgbKAm-LbHTy1sxtm7_hMg"
