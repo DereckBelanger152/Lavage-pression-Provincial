@@ -159,7 +159,6 @@ function App() {
     { href: "#about", label: "À Propos" },
     { href: "#services", label: "Services" },
     { href: "#gallery", label: "Galerie" },
-    { href: "#testimonials", label: "Témoignages" },
     { href: "#contact", label: "Contact" },
   ];
 
@@ -216,8 +215,8 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Navigation - Enhanced with hover effects and transitions */}
+    <div className="min-h-screen bg-white overflow-hidden">
+      {/* Navigation */}
       <nav className="fixed w-full bg-white/95 backdrop-blur-sm shadow-md z-50 transition-all duration-300">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -353,13 +352,16 @@ function App() {
       </div>
 
       {/* About Section - Enhanced with better visuals */}
-      <div id="about" className="py-24 bg-white relative overflow-hidden">
+      <div
+        id="about"
+        className="py-24 bg-white relative overflow-hidden overflow-x-hidden"
+      >
         {/* Background decoration */}
-        <div className="absolute top-0 right-0 w-72 h-72 bg-blue-50 rounded-full -translate-y-1/2 translate-x-1/2 opacity-70"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-50 rounded-full translate-y-1/2 -translate-x-1/2 opacity-70"></div>
+        <div className="absolute top-0 right-0 w-64 sm:w-72 h-64 sm:h-72 bg-blue-50 rounded-full -translate-y-1/2 translate-x-1/2 opacity-70"></div>
+        <div className="absolute bottom-0 left-0 w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96 bg-blue-50 rounded-full translate-y-1/2 -translate-x-1/2 opacity-70"></div>
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -369,7 +371,7 @@ function App() {
               <div className="relative">
                 <div className="absolute -top-6 -left-6 w-24 h-24 bg-blue-100 rounded-lg z-0"></div>
                 <img
-                  src="/notreequipe.webp" // Changement de l'extension
+                  src="/notreequipe.webp"
                   alt="Notre équipe"
                   className="rounded-lg shadow-xl relative z-10 w-full h-auto hover:shadow-2xl transition-shadow duration-300"
                   width="600"
@@ -393,13 +395,13 @@ function App() {
               <div className="inline-block px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-sm font-medium mb-4">
                 NOTRE HISTOIRE
               </div>
-              <h2 className="text-3xl font-bold mb-6 text-gray-800">
+              <h2 className="text-3xl font-bold mb-6 text-gray-800 text-center sm:text-left">
                 À propos de Lavage à pression Provincial
               </h2>
-              <p className="text-lg text-gray-600 mb-6">
+              <p className="text-lg text-gray-600 mb-6 text-center sm:text-left">
                 Découvrez notre expertise dans le nettoyage haute pression.
               </p>
-              <div className="grid grid-cols-2 gap-4 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                 <div className="flex items-start gap-3 group hover:bg-blue-50 p-2 rounded-lg transition-colors duration-300">
                   <div className="text-blue-600 mt-1 bg-blue-100 p-2 rounded-full group-hover:bg-blue-200 transition-colors duration-300">
                     <Check size={20} />
@@ -445,17 +447,17 @@ function App() {
                   </div>
                 </div>
               </div>
-              <div className="flex gap-4 mt-8 bg-blue-50 p-4 rounded-xl">
+              <div className="flex flex-wrap justify-center gap-4 mt-8 bg-blue-50 p-4 rounded-xl">
                 <div className="text-center">
                   <h3 className="text-3xl font-bold text-blue-600 mb-1">2+</h3>
                   <p className="text-gray-600 text-sm">Années d'expérience</p>
                 </div>
-                <div className="w-px bg-blue-200"></div>
+                <div className="w-px bg-blue-200 hidden sm:block"></div>
                 <div className="text-center">
                   <h3 className="text-3xl font-bold text-blue-600 mb-1">50+</h3>
                   <p className="text-gray-600 text-sm">Clients satisfaits</p>
                 </div>
-                <div className="w-px bg-blue-200"></div>
+                <div className="w-px bg-blue-200 hidden sm:block"></div>
                 <div className="text-center">
                   <h3 className="text-3xl font-bold text-blue-600 mb-1">
                     100%
