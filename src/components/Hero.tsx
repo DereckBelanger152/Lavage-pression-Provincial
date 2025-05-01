@@ -4,14 +4,14 @@ import { ArrowRight } from "lucide-react";
 export default function Hero() {
   return (
     <div className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Image de fond animée */}
+      {/* Image de fond avec zoom lent */}
       <img
         src="/hero.webp"
-        alt="Service de lavage à pression"
+        alt="Nettoyage de toiture"
         className="absolute inset-0 w-full h-full object-cover scale-100 animate-slow-zoom"
       />
 
-      {/* Overlay en dégradé */}
+      {/* Overlay dégradé */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -19,26 +19,22 @@ export default function Hero() {
         className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/30"
       />
 
-      {/* Contenu texte */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2 }}
-        className="relative z-10 text-center text-white max-w-4xl px-4"
-      >
+      {/* Contenu */}
+      <div className="relative z-10 text-center text-white max-w-4xl px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
+          transition={{ duration: 0.6 }}
           className="text-sm font-semibold text-blue-300 mb-3 tracking-wider"
         >
           SERVICE PROFESSIONNEL DE NETTOYAGE À HAUTE PRESSION
         </motion.div>
 
+        {/* ✅ Texte LCP SANS delay */}
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
+          transition={{ duration: 0.5 }} // sans delay !
           className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-md"
         >
           Redonnez vie à vos surfaces{" "}
@@ -48,7 +44,7 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
           className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto"
         >
           Un nettoyage puissant et précis pour transformer l'apparence de votre
@@ -58,7 +54,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <a
@@ -87,7 +83,7 @@ export default function Hero() {
             Nos services
           </a>
         </motion.div>
-      </motion.div>
+      </div>
     </div>
   );
 }

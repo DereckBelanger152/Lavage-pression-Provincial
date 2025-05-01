@@ -170,27 +170,27 @@ function App() {
       description: "Application de scellant sur une toiture métallique.",
     },
     {
-      image: "/gallerie2.jpg",
+      image: "/gallerie2.webp",
       title: "Toiture Commerciale",
       description: "Produit final de décapage de toiture métallique.",
     },
     {
-      image: "/gallerie3.jpg",
+      image: "/gallerie3.webp",
       title: "Toiture Métallique",
       description: "Avant/Après de notre service de décapage.",
     },
     {
-      image: "/gallerie4.jpg",
+      image: "/gallerie4.webp",
       title: "Toiture Grande Surface",
       description: "Nettoyage en profondeur d'une usine.",
     },
     {
-      image: "/gallerie5.jpg",
+      image: "/gallerie5.webp",
       title: "Toiture de Grange",
       description: "Avant/Après de notre service de décapage.",
     },
     {
-      image: "/gallerie6.jpg",
+      image: "/gallerie6.webp",
       title: "Toiture Résidentielle",
       description: "Nettoyage et entretien de toiture.",
     },
@@ -369,7 +369,7 @@ function App() {
               <div className="relative">
                 <div className="absolute -top-6 -left-6 w-24 h-24 bg-blue-100 rounded-lg z-0"></div>
                 <img
-                  src="/notreequipe.jpg"
+                  src="/notreequipe.webp" // Changement de l'extension
                   alt="Notre équipe"
                   className="rounded-lg shadow-xl relative z-10 w-full h-auto hover:shadow-2xl transition-shadow duration-300"
                   width="600"

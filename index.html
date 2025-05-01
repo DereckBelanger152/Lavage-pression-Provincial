@@ -71,13 +71,22 @@
   </head>
 
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PNQWFH7M09"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-PNQWFH7M09');
+    window.addEventListener('scroll', function loadGTMOnce() {
+      const script = document.createElement('script');
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-PNQWFH7M09';
+      script.async = true;
+      document.head.appendChild(script);
+  
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-PNQWFH7M09');
+  
+      window.removeEventListener('scroll', loadGTMOnce);
+    }, { once: true });
   </script>
+  
 
   <body>
     <div id="root"></div>
