@@ -240,7 +240,7 @@ function App() {
             </motion.div>
 
             {/* Desktop Navigation - Enhanced with hover effects */}
-            <div className="hidden md:flex items-center gap-6 lg:gap-8">
+            <div className="hidden md:flex items-center gap-6 lg:gap-8 md:ml-24 lg:ml-0">
               {navItems.map((item, index) => (
                 <motion.a
                   key={item.href}
@@ -788,7 +788,8 @@ function App() {
         </div>
       </div>
 
-      {/* Testimonials Section - Enhanced carousel and cards */}
+      {/* Testimonials Section - Commented Out */}
+      {/*
       <div id="testimonials" className="py-24 bg-gray-50">
         <div className="container mx-auto px-4">
           <motion.div
@@ -806,7 +807,7 @@ function App() {
           </motion.div>
 
           <div className="relative flex items-center">
-            {/* Left Button */}
+
             <button
               onClick={handlePrev}
               className="absolute left-0 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-all transform hover:scale-110 z-10"
@@ -815,7 +816,6 @@ function App() {
               &#8592;
             </button>
 
-            {/* Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mx-auto">
               {testimonials
                 .slice(currentIndex, currentIndex + 3)
@@ -829,7 +829,6 @@ function App() {
                 ))}
             </div>
 
-            {/* Right Button */}
             <button
               onClick={handleNext}
               className="absolute right-0 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-all transform hover:scale-110 z-10"
@@ -840,6 +839,7 @@ function App() {
           </div>
         </div>
       </div>
+      */}
 
       {/* Commitment Section - Enhanced with icons and hover effect */}
       <div
@@ -896,6 +896,7 @@ function App() {
                 vos besoins résidentiels, commerciaux et agricoles.
               </p>
             </div>
+
             <div>
               <h3 className="text-xl font-bold mb-4 border-b border-gray-700 pb-2">
                 Contactez-nous
@@ -917,15 +918,19 @@ function App() {
                   <div className="bg-gray-800 p-2 rounded-full group-hover:bg-blue-900 transition-colors">
                     <Mail size={18} />
                   </div>
-                  contact@lavageapressionprovincial.com
+                  {/* optional break just after “lavage” */}
+                  contact@lavage
+                  <wbr />
+                  apressionprovincial.com
                 </a>
               </div>
             </div>
+
             <div>
               <h3 className="text-xl font-bold mb-4 border-b border-gray-700 pb-2">
                 Suivez-nous sur les réseaux sociaux
               </h3>
-              <div className="flex gap-4">
+              <div className="flex gap-4 md:ml-8 lg:ml-0">
                 <a
                   href="https://www.facebook.com/profile.php?id=61561781400841"
                   className="bg-gray-800 p-3 rounded-full hover:bg-blue-800 text-gray-400 hover:text-white transition-all"
@@ -949,19 +954,22 @@ function App() {
                   className="bg-gray-800 p-3 rounded-full hover:bg-black-700 text-gray-400 hover:text-white transition-all"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Tiktok"
                 >
                   <FaTiktok size={24} />
                 </a>
               </div>
             </div>
           </div>
+
           <div className="border-t border-gray-800 mt-8 pt-8 text-center">
             <p className="text-sm text-gray-400">
-              © 2025 Dereck Bélanger - Tous droits réservés.
+              © 2025 Dereck Bélanger – Tous droits réservés.
             </p>
           </div>
         </div>
       </footer>
+
       {/* Scroll to Top Button */}
       <AnimatePresence>
         {showScrollTop && (
