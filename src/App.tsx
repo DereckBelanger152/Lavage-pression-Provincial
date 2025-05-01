@@ -165,7 +165,7 @@ function App() {
 
   const galleryImages = [
     {
-      image: "/gallerie1.jpg",
+      image: "/gallerie1.webp",
       title: "Projet Résidentiel",
       description: "Application de scellant sur une toiture métallique.",
     },
@@ -229,7 +229,7 @@ function App() {
               onClick={scrollToTop}
             >
               <img
-                src="/logonobackground.png"
+                src="/logonobackground.webp"
                 alt="Lavage à pression Provincial Logo"
                 className="w-auto h-10 mr-3 transition-transform duration-300 group-hover:scale-110"
                 width="40"
@@ -684,20 +684,16 @@ function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative h-64 overflow-hidden rounded-lg shadow-lg cursor-pointer"
               >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                  <div className="text-white w-full">
-                    <h3 className="font-bold text-lg">{project.title}</h3>
-                    <p className="text-gray-200 text-sm">
-                      {project.description}
-                    </p>
-                  </div>
+                <div className="group relative h-64 w-full overflow-hidden rounded-lg shadow-lg cursor-pointer">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                    width="400"
+                    height="256"
+                    loading="lazy"
+                  />
                 </div>
               </motion.div>
             ))}

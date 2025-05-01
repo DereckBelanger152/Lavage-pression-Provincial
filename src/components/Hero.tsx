@@ -30,11 +30,10 @@ export default function Hero() {
           SERVICE PROFESSIONNEL DE NETTOYAGE À HAUTE PRESSION
         </motion.div>
 
-        {/* ✅ Texte LCP SANS delay */}
         <motion.h2
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }} // sans delay !
+          initial={false} // pas d'animation d'apparition
+          animate={{ y: 0 }} // ou rien du tout
+          transition={{ duration: 0 }} // instantané
           className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-md"
         >
           Redonnez vie à vos surfaces{" "}
