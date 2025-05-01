@@ -6,17 +6,20 @@
     <title>Lavage à pression Provincial - Nettoyage et décapage</title>
 
     <!-- SEO -->
-    <meta name="description" content="Lavage à pression Provincial offre des services professionnels de lavage/décapage à pression pour maisons, commerces et industries au Québec" />
-    <meta name="keywords" content="lavage à pression, propriété, toiture métallique, nettoyage, toiture, haute pression, service, nettoyage professionnel, lavage maison, lavage commercial, Québec, nettoyage industriel" />
+    <meta name="description" content="Nettoyage à pression rapide, efficace et garanti pour maisons, commerces et bâtiments agricoles à Québec. Estimation gratuite!" />
+    <meta name="keywords" content="lavage à pression, toiture, nettoyage, haute pression, lavage maison, lavage commercial, Québec, nettoyage industriel" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://www.lavageapressionprovincial.com" />
 
-    <!-- Favicon -->
-    <link rel="icon" href="/logo.ico" type="image/png" />
+    <!-- Favicons -->
+    <link rel="icon" href="/logo.ico" sizes="any" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/logo.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/logo.ico" />
 
     <!-- Open Graph -->
     <meta property="og:title" content="Lavage à pression Provincial - Services de lavage à pression professionnel" />
-    <meta property="og:description" content="Découvrez nos services de lavage/décapage à pression professionnel pour maisons, commerces et industries au Québec" />
+    <meta property="og:description" content="Nettoyage à pression rapide, efficace et garanti pour maisons, commerces et bâtiments agricoles à Québec." />
     <meta property="og:image" content="https://lavageapressionprovincial.com/logo.jpg" />
     <meta property="og:url" content="https://lavageapressionprovincial.com" />
     <meta property="og:type" content="website" />
@@ -26,7 +29,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Lavage à pression Provincial" />
-    <meta name="twitter:description" content="Services de lavage à pression résidentiel, commercial et industriel au Québec." />
+    <meta name="twitter:description" content="Nettoyage à pression résidentiel, commercial et agricole au Québec. Estimation gratuite." />
     <meta name="twitter:image" content="https://lavageapressionprovincial.com/images/logo.jpg" />
 
     <!-- JSON-LD Schema -->
@@ -35,9 +38,8 @@
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Lavage à pression Provincial",
-      "description": "Services professionnels de lavage à pression pour maisons, commerces et industries au Québec.",
+      "description": "Nettoyage à pression professionnel pour résidences, commerces et fermes au Québec.",
       "url": "https://lavageapressionprovincial.com",
-      "telephone": "+1-581-996-0767",
       "image": "https://lavageapressionprovincial.com/images/logo.jpg",
       "address": {
         "@type": "PostalAddress",
@@ -45,7 +47,20 @@
         "addressRegion": "QC",
         "addressCountry": "CA"
       },
-      "openingHours": "Mo-Fr 08:00-18:00",
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "telephone": "+1-581-996-0767",
+        "contactType": "customer service",
+        "areaServed": "CA"
+      }],
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
+        ],
+        "opens": "08:00",
+        "closes": "18:00"
+      }],
       "areaServed": {
         "@type": "Place",
         "name": "Québec, Lévis, Beauce, Portneuf"
@@ -54,20 +69,18 @@
     }
     </script>
   </head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PNQWFH7M09"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-PNQWFH7M09');
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PNQWFH7M09"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PNQWFH7M09');
+  </script>
+
   <body>
     <div id="root"></div>
-    <!-- CRITIQUE pour que React/Vite fonctionne -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-<div id="root"></div>
-<script type="module" src="/src/main.tsx"></script>
