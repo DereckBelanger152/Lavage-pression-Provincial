@@ -30,15 +30,10 @@ export default function Hero() {
           SERVICE PROFESSIONNEL DE NETTOYAGE À HAUTE PRESSION
         </motion.div>
 
-        <motion.h2
-          initial={false} // pas d'animation d'apparition
-          animate={{ y: 0 }} // ou rien du tout
-          transition={{ duration: 0 }} // instantané
-          className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-md"
-        >
+        <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-md">
           Redonnez vie à vos surfaces{" "}
           <span className="text-blue-300">extérieures</span>
-        </motion.h2>
+        </h2>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
