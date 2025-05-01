@@ -1,62 +1,17 @@
-import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
-  const heroRef = useRef(null);
-  const [showVideo, setShowVideo] = useState(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setShowVideo(true);
-    }, 1000); // 1 seconde
-
-    return () => clearTimeout(timeout);
-  }, []);
-
-  useEffect(() => {
-    if (showVideo) {
-      const video = document.getElementById(
-        "hero-video"
-      ) as HTMLVideoElement | null;
-      if (video) {
-        const playPromise = video.play();
-        if (playPromise !== undefined) {
-          playPromise.catch((err) => {
-            console.warn("La lecture automatique a échoué :", err);
-          });
-        }
-      }
-    }
-  }, [showVideo]);
-
   return (
-    <div
-      ref={heroRef}
-      className="relative h-screen bg-cover bg-center flex items-center justify-center overflow-hidden"
-    >
-      <div className="absolute inset-0 w-full h-full transform scale-105">
-        {!showVideo ? (
-          <img
-            src="/headerpressure-preview.webp"
-            alt="Aperçu de la vidéo"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        ) : (
-          <video
-            id="hero-video"
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-[10000ms] ease-out animate-slow-zoom"
-            src="/headerpressure.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-          />
-        )}
-      </div>
+    <div className="relative h-screen flex items-center justify-center overflow-hidden">
+      {/* Image de fond animée */}
+      <img
+        src="/hero.webp"
+        alt="Service de lavage à pression"
+        className="absolute inset-0 w-full h-full object-cover scale-100 animate-slow-zoom"
+      />
 
-      {/* Overlay dégradé */}
+      {/* Overlay en dégradé */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -64,10 +19,12 @@ export default function Hero() {
         className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/30"
       />
 
-      {/* Contenu */}
+      {/* Contenu texte */}
       <motion.div
-        style={{ opacity: 1, scale: 1 }}
-        className="relative text-center w-full max-w-4xl px-4 z-10"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2 }}
+        className="relative z-10 text-center text-white max-w-4xl px-4"
       >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -77,6 +34,7 @@ export default function Hero() {
         >
           SERVICE PROFESSIONNEL DE NETTOYAGE À HAUTE PRESSION
         </motion.div>
+
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -86,6 +44,7 @@ export default function Hero() {
           Redonnez vie à vos surfaces{" "}
           <span className="text-blue-300">extérieures</span>
         </motion.h2>
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -95,6 +54,7 @@ export default function Hero() {
           Un nettoyage puissant et précis pour transformer l'apparence de votre
           propriété
         </motion.p>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
